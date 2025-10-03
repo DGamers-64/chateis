@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import { styleText } from "node:util";
+import { apiv1Router } from "./routers/apiv1.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,9 +12,7 @@ const PORT = process.env.PORT || 7500;
 
 app.use(express.json());
 
-app.use("/api/v1", (req, res) => {
-    res.send({ status: "ok" })
-})
+app.use("/api/v1", apiv1Router)
 
 const distPath = path.join(__dirname, "client", "dist");
 app.use(express.static(distPath));
