@@ -14,4 +14,6 @@ apiv1Router.post("/notificaciones", )
 apiv1Router.get("/mods", )
 apiv1Router.post("/mods", )
 
+apiv1Router.get("/todo", )
+
 apiv1Router.get("/info", )
