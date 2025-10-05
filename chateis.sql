@@ -14,7 +14,7 @@ CREATE TABLE usuarios(
 CREATE TABLE grupos(
     id BINARY(16) PRIMARY KEY DEFAULT (UUID_TO_BIN(UUID())),
     nombre VARCHAR(255) NOT NULL,
-    creado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE salas(
@@ -24,29 +24,39 @@ CREATE TABLE salas(
 );
 
 CREATE TABLE usuarios_en_grupos(
-    usuario BINARY(16),
-    grupo BINARY(16),
+    usuario BINARY(16) NOT NULL,
+    grupo BINARY(16) NOT NULL,
     CONSTRAINT FK_usuario_grupo FOREIGN KEY (usuario) REFERENCES usuarios(id),
     CONSTRAINT FK_grupo_usuario FOREIGN KEY (grupo) REFERENCES grupos(id),
     CONSTRAINT PK_usuarios_en_grupos PRIMARY KEY (usuario, grupo)
 );
 
 CREATE TABLE usuario_permisos_sala(
-    usuario BINARY(16),
-    permiso VARCHAR(30),
-    sala VARCHAR(20),
+    usuario BINARY(16) NOT NULL,
+    permiso VARCHAR(30) NOT NULL,
+    sala VARCHAR(20) NOT NULL,
     CONSTRAINT FK_usuario_permisos_sala FOREIGN KEY (usuario) REFERENCES usuarios(id),
     CONSTRAINT FK_sala_permisos_usuario FOREIGN KEY (sala) REFERENCES salas(id),
-    CONSTRAINT PK_usuario_permisos_sala PRIMARY KEY (usuario, sala)
+    CONSTRAINT PK_usuario_permisos_sala PRIMARY KEY (usuario, permiso, sala)
 );
 
 CREATE TABLE grupos_permisos_sala(
-    grupo BINARY(16),
-    permiso VARCHAR(30),
-    sala VARCHAR(20),
+    grupo BINARY(16) NOT NULL,
+    permiso VARCHAR(30) NOT NULL,
+    sala VARCHAR(20) NOT NULL,
     CONSTRAINT FK_grupo_permisos_sala FOREIGN KEY (grupo) REFERENCES grupos(id),
     CONSTRAINT FK_sala_permisos_grupo FOREIGN KEY (sala) REFERENCES salas(id),
-    CONSTRAINT PK_grupo_permisos_sala PRIMARY KEY (grupo, sala)
+    CONSTRAINT PK_grupo_permisos_sala PRIMARY KEY (grupo, permiso, sala)
+);
+
+CREATE TABLE mensajes(
+    id BINARY(16) PRIMARY KEY DEFAULT (UUID_TO_BIN(UUID())),
+    sala VARCHAR(20) NOT NULL,
+    usuario BINARY(16) NOT NULL,
+    mensaje TEXT NOT NULL,
+    mandado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT FK_sala_mensajes FOREIGN KEY (sala) REFERENCES salas(id),
+    CONSTRAINT FK_usuario_mensajes FOREIGN KEY (usuario) REFERENCES usuarios(id)
 );
 
 -- Insertado datos por defecto
