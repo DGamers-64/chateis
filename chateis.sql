@@ -6,7 +6,7 @@ USE chateis;
 
 CREATE TABLE usuarios(
     id CHAR(36) PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
+    nombre VARCHAR(100) UNIQUE NOT NULL,
     pwd VARCHAR(255) NOT NULL,
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
