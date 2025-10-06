@@ -5,14 +5,14 @@ USE chateis;
 -- Creación de tablas
 
 CREATE TABLE usuarios(
-    id BINARY(16) PRIMARY KEY DEFAULT (UUID_TO_BIN(UUID())),
+    id CHAR(36) PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     pwd VARCHAR(255) NOT NULL,
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE grupos(
-    id BINARY(16) PRIMARY KEY DEFAULT (UUID_TO_BIN(UUID())),
+    id CHAR(36) PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -24,15 +24,15 @@ CREATE TABLE salas(
 );
 
 CREATE TABLE usuarios_en_grupos(
-    usuario BINARY(16) NOT NULL,
-    grupo BINARY(16) NOT NULL,
+    usuario CHAR(36) NOT NULL,
+    grupo CHAR(36) NOT NULL,
     CONSTRAINT FK_usuario_grupo FOREIGN KEY (usuario) REFERENCES usuarios(id),
     CONSTRAINT FK_grupo_usuario FOREIGN KEY (grupo) REFERENCES grupos(id),
     CONSTRAINT PK_usuarios_en_grupos PRIMARY KEY (usuario, grupo)
 );
 
 CREATE TABLE usuario_permisos_sala(
-    usuario BINARY(16) NOT NULL,
+    usuario CHAR(36) NOT NULL,
     permiso VARCHAR(30) NOT NULL,
     sala VARCHAR(20) NOT NULL,
     CONSTRAINT FK_usuario_permisos_sala FOREIGN KEY (usuario) REFERENCES usuarios(id),
@@ -41,7 +41,7 @@ CREATE TABLE usuario_permisos_sala(
 );
 
 CREATE TABLE grupos_permisos_sala(
-    grupo BINARY(16) NOT NULL,
+    grupo CHAR(36) NOT NULL,
     permiso VARCHAR(30) NOT NULL,
     sala VARCHAR(20) NOT NULL,
     CONSTRAINT FK_grupo_permisos_sala FOREIGN KEY (grupo) REFERENCES grupos(id),
@@ -50,9 +50,9 @@ CREATE TABLE grupos_permisos_sala(
 );
 
 CREATE TABLE mensajes(
-    id BINARY(16) PRIMARY KEY DEFAULT (UUID_TO_BIN(UUID())),
+    id CHAR(36) PRIMARY KEY,
     sala VARCHAR(20) NOT NULL,
-    usuario BINARY(16) NOT NULL,
+    usuario CHAR(36) NOT NULL,
     mensaje TEXT NOT NULL,
     mandado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT FK_sala_mensajes FOREIGN KEY (sala) REFERENCES salas(id),
@@ -60,4 +60,5 @@ CREATE TABLE mensajes(
 );
 
 -- Insertado datos por defecto
-
+INSERT INTO salas VALUES
+    ("default", "Chat general", TRUE);
