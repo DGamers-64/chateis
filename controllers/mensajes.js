@@ -12,6 +12,10 @@ export default class MensajesController {
     static async enviarMensaje(req, res) {
         let [estado, resultado] = await MensajesModel.insertMensajes(req.body.usuario, req.body.sala, req.body.mensaje)
 
-        res.send(resultado)
+        if (estado) {
+            res.send(resultado)
+        } else {
+            res.send({ error: resultado})
+        }
     }
 }
