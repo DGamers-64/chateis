@@ -1,4 +1,3 @@
-import { da } from "zod/locales";
 import validarMensaje from "../schemas/mensajes.js"
 import MySQLModel from "./mysql.js"
 import crypto from "crypto";
@@ -22,15 +21,23 @@ export default class MensajesModel {
             WHERE nombre LIKE ?`,
             [usuario])
 
-        console.log(idUsuario)
-
         const mensajeFinal = {
             id: crypto.randomUUID(),
             sala: sala,
-            usuario: usuario,
+            usuario: idUsuario[0].id,
             mensaje: mensaje
         }
 
-        return validarMensaje(mensajeFinal)
+        const estado = validarMensaje(mensajeFinal)
+
+        if (estado.success) {
+            const resultado = await MySQLModel.query(`
+                INSERT INTO mensajes (id, sala, usuario, mensaje) VALUES
+                (?, ?, ?, ?)`,
+                [estado.data.id, estado.data.sala, estado.data.usuario, estado.data.mensaje])
+            return [true, resultado]
+        } else {
+            return [false, estado.error]
+        }
     }
 }
