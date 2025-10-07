@@ -7,7 +7,10 @@ export default class MensajesModel {
         let resultado = []
         
         resultado = await MySQLModel.query(`
-            SELECT * FROM mensajes
+            SELECT u.nombre, m.mandado_en, m.mensaje
+            FROM mensajes AS m
+            JOIN usuarios AS u
+            ON m.usuario LIKE u.id
             WHERE sala LIKE ? AND mandado_en > ?
             ORDER BY mandado_en ASC`,
             [sala, ultimo_timestamp])
