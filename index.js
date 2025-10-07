@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 import { apiv1Router } from "./routers/v1/apiv1.js";
@@ -9,6 +10,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 7500;
 
+app.use(cors())
 app.use(express.json());
 
 app.use("/api/v1", apiv1Router)
