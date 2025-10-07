@@ -1,9 +1,7 @@
 <template>
-    <h1>Hola mundo</h1>
+    <MainLayout />
 </template>
 
 <script setup>
+    import MainLayout from './views/MainLayout.vue'
 </script>
-
-<style scoped>
-</style>

@@ -1,7 +1,6 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import { styleText } from "node:util";
 import { apiv1Router } from "./routers/v1/apiv1.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -34,5 +33,5 @@ app.listen(PORT, () => {
         "--------------------------------------------",
     ].join("\n")
 
-    console.log(styleText("cyan", texto))
+    console.log(texto)
 })
