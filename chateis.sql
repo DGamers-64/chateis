@@ -8,6 +8,7 @@ CREATE TABLE usuarios(
     id CHAR(36) PRIMARY KEY,
     nombre VARCHAR(100) UNIQUE NOT NULL,
     pwd VARCHAR(255) NOT NULL,
+    conectado BOOLEAN,
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -63,5 +64,5 @@ CREATE TABLE mensajes(
 INSERT INTO salas VALUES
     ("default", "Chat general", TRUE);
 
-INSERT INTO usuarios (id, nombre, pwd) VALUES
-    (UUID(), "SISTEMA", "1234");
+INSERT INTO usuarios (id, nombre, pwd, conectado) VALUES
+    (UUID(), "SISTEMA", "1234", FALSE);
