@@ -10,9 +10,9 @@
     let conectados = ref(0)
 
     async function obtenerConectados() {
-        await fetch(`${window.location.origin}/api/v1/conectado`)
+        await fetch(`http://localhost:7500/api/v1/conectado`)
             .then(res => res.json())
-            .then(data => conectados.value = data[0].conectados)
+            .then(data => conectados.value = data.length)
     }
 
     onMounted(() => {

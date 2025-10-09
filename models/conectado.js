@@ -5,7 +5,7 @@ export default class ConectadoModel {
         let resultado = []
         
         resultado = await MySQLModel.query(`
-            SELECT COUNT(u.conectado) AS "conectados"
+            SELECT u.nombre
             FROM usuarios AS u
             WHERE u.conectado = TRUE`)
 
