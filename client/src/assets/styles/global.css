@@ -7,5 +7,6 @@
 
 :root {
     --fondo-color-1: rgb(218, 158, 69);
-    --border-1: 1px solid blue
+    --fondo-color-2: rgb(69, 158, 218);
+    --border-1: 1px solid black
 }

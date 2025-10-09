@@ -1,6 +1,6 @@
 <template>
     <div id="botones-flex">
-        <span id="elemento-conectados"><img id="conectados-icono" src="../assets/img/conectados-icono.png"> Conectados: <span id="conectados">{{ conectados }}</span></span>
+        <span id="elemento-conectados"><img id="conectados-icono" src="../assets/img/conectados-icono.png"> <span id="conectados">{{ conectados }}</span></span>
     </div>
 </template>
 
@@ -24,12 +24,17 @@
 <style scoped>
     #botones-flex {
         display: flex;
+        justify-content: center;
         gap: 1rem;
+        border: var(--border-1);
+        background-color: white;
+        width: fit-content;
     }
-
+    
     #elemento-conectados {
         display: flex;
         align-items: center;
+        padding: .5rem;
         gap: .5rem;
     }
 
