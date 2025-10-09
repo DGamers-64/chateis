@@ -1,12 +1,39 @@
 <template>
-    <img id="imagen-titulo" src="../assets/img/misc/titulo.png" alt="Imagen de título"/>
+    <div id="botones-flex">
+        <span id="elemento-conectados"><img id="conectados-icono" src="../assets/img/conectados-icono.png"> Conectados: <span id="conectados">{{ conectados }}</span></span>
+    </div>
 </template>
 
 <script setup>
+    import { ref, onMounted } from "vue";
+
+    let conectados = ref(0)
+
+    async function obtenerConectados() {
+        await fetch("http://localhost:7500/api/v1/conectado")
+            .then(res => res.json())
+            .then(data => conectados.value = data[0].conectados)
+    }
+
+    onMounted(() => {
+        obtenerConectados()
+        setInterval(obtenerConectados, 5000)
+    })
 </script>
 
 <style scoped>
-    #imagen-titulo {
-        max-height: 100%;
+    #botones-flex {
+        display: flex;
+        gap: 1rem;
+    }
+
+    #elemento-conectados {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    #conectados-icono {
+        width: 20px;
     }
 </style>
