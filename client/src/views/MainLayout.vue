@@ -4,23 +4,24 @@
             <BotonesSuperioresComponent />
         </nav>
         <section id="chat-container">
-            <ChatComponent />
+            <ChatComponent :sala="sala"/>
         </section>
         <aside id="salas-container">
             <!-- <SalasNavComponent /> -->
         </aside>
         <footer id="inputs-container">
-            <InputsComponent />
+            <InputsComponent :sala="sala"/>
         </footer>
     </main>
 </template>
 
 <script setup>
-    import axios from "axios";
     import BotonesSuperioresComponent from "../components/BotonesSuperioresComponent.vue";
     import ChatComponent from "../components/ChatComponent.vue";
     import InputsComponent from "../components/InputsComponent.vue";
 
+    const params = new URLSearchParams(window.location.query)
+    const sala = params.get('sala') || "default"
 </script>
 
 <style scoped>

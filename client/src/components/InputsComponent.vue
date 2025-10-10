@@ -6,6 +6,38 @@
 </template>
 
 <script setup>
+    import axios from 'axios'
+    import { onMounted } from 'vue'
+
+    const props = defineProps({
+        sala: String
+    })
+    
+    onMounted(() => {
+        const inputMensaje = document.getElementById("input-mensaje")
+        const botonEnvio = document.getElementById("boton-envio")
+        
+        inputMensaje.addEventListener("keypress", (e) => {
+            if (e.key == "Enter") mandarMensaje()
+        })
+    
+        botonEnvio.addEventListener("click", (e) => {
+            e.preventDefault()
+            mandarMensaje()
+        })
+
+        async function mandarMensaje() {
+            const mensaje = {
+                usuario: "SISTEMA", // CAMBIAR POR EL SESSION DEL USUARIO O ALGO
+                sala: props.sala,
+                mensaje: inputMensaje.value
+            }
+    
+            axios.post(`http://localhost:7500/api/v1/mensajes`, mensaje) // CAMBIAR LA URL POR LA DEL SERVIDOR
+
+            inputMensaje.value = ""
+        }
+    })
 
 </script>
 

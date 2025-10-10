@@ -5,7 +5,7 @@ import crypto from "crypto";
 export default class MensajesModel {
     static async getMensajes(sala = "default", ultimo_timestamp = '1970-01-01 00:00:00') {
         let resultado = []
-        
+
         resultado = await MySQLModel.query(`
             SELECT u.nombre, m.mandado_en, m.mensaje
             FROM mensajes AS m

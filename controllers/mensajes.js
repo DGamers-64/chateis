@@ -10,7 +10,7 @@ export default class MensajesController {
     }
 
     static async enviarMensaje(req, res) {
-        let [estado, resultado] = await MensajesModel.insertMensajes(req.body.usuario, req.body.sala, req.body.mensaje)
+        let [estado, resultado] = await MensajesModel.insertMensajes(req.body.usuario, req.body.sala, req.body.mensaje) // CAMBIAR POR EL SESSION
 
         if (estado) {
             res.send(resultado)
