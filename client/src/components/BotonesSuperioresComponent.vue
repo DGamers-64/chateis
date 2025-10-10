@@ -10,7 +10,7 @@
     let conectados = ref(0)
 
     async function obtenerConectados() {
-        await fetch(`http://localhost:7500/api/v1/conectado`)
+        await fetch(`/api/v1/conectado`)
             .then(res => res.json())
             .then(data => conectados.value = data.length)
     }

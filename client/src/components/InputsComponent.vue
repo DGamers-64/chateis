@@ -33,7 +33,7 @@
                 mensaje: inputMensaje.value
             }
     
-            axios.post(`http://localhost:7500/api/v1/mensajes`, mensaje) // CAMBIAR LA URL POR LA DEL SERVIDOR
+            axios.post(`/api/v1/mensajes`, mensaje) // CAMBIAR LA URL POR LA DEL SERVIDOR
 
             inputMensaje.value = ""
         }

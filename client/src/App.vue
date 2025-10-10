@@ -1,7 +1,6 @@
 <template>
-    <MainLayout />
+    <router-view />
 </template>
 
 <script setup>
-    import MainLayout from './views/MainLayout.vue'
 </script>

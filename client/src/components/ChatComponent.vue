@@ -21,7 +21,7 @@ import { onMounted } from 'vue'
 		chatContainer.scrollTop = chatContainer.scrollHeight
 
 		setInterval(() => {
-			let url = `http://localhost:7500/api/v1/mensajes?sala=${props.sala}` // CAMBIAR POR LA URL DE LA PÁGINA
+			let url = `/api/v1/mensajes?sala=${props.sala}` // CAMBIAR POR LA URL DE LA PÁGINA
 			if (historial.length > 0) {
 				const ultimoMensaje = historial.reduce((a, b) => 
 					new Date(a.mandado_en) > new Date(b.mandado_en) ? a : b
