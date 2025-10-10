@@ -8,5 +8,7 @@
 :root {
     --fondo-color-1: rgb(218, 158, 69);
     --fondo-color-2: rgb(69, 158, 218);
-    --border-1: 1px solid black
+    --border-1: 1px solid black;
+    --hover-color-1: rgb(59, 59, 59);
+    --hover-color-2: rgb(201, 201, 201);
 }

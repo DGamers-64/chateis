@@ -20,6 +20,8 @@
     import ChatComponent from "../components/ChatComponent.vue";
     import InputsComponent from "../components/InputsComponent.vue";
 
+    document.title = "Chateis"
+
     const params = new URLSearchParams(window.location.query)
     const sala = params.get('sala') || "default"
 </script>

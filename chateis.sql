@@ -63,6 +63,3 @@ CREATE TABLE mensajes(
 -- Insertado datos por defecto
 INSERT INTO salas VALUES
     ("default", "Chat general", TRUE);
-
-INSERT INTO usuarios (id, nombre, pwd, conectado) VALUES
-    (UUID(), "SISTEMA", "1234", FALSE);
