@@ -47,6 +47,10 @@ import { onMounted } from 'vue'
 			
 		}, 1000)
 
+		setInterval(() => {
+			if (scrollEstaAbajo) chatContainer.scrollTop = chatContainer.scrollHeight
+		})
+
 		chatContainer.addEventListener("scroll", () => {
 			if (chatContainer.scrollTop + chatContainer.clientHeight >= chatContainer.scrollHeight - 1) {
 				scrollEstaAbajo = true
@@ -64,8 +68,8 @@ import { onMounted } from 'vue'
 		display: flex;
 		flex-direction: column;
 		gap: 0.3rem;
-		overflow-y: auto;  /* scroll vertical */
-		height: 100%;      /* ocupa todo el contenedor pero respeta padding */
+		overflow-y: auto;
+		height: 100%;
 		box-sizing: border-box;
 		flex: 1 1 0;
 	}
