@@ -31,7 +31,7 @@ app.use("/api/v1", apiv1Router)
 const distPath = path.join(__dirname, "client", "dist");
 app.use(express.static(distPath));
 
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
     res.sendFile(path.join(distPath, "index.html"));
 });
 
