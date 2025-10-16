@@ -17,4 +17,14 @@ export default class LoginController {
         req.session.user = { id: usuario.id, nombre: usuario.nombre };
         res.send({ ok: true });
     }
+
+    static async registrarUsuario(req, res) {
+        let [estado, resultado] = await LoginModel.insertUsuario(req.body.usuario, req.body.password)
+
+        if (estado) {
+            res.send(resultado)
+        } else {
+            res.send({ error: resultado })
+        }
+    }
 }

@@ -20,11 +20,6 @@ async function crearUsuarioPorDefecto() {
             [crypto.randomUUID(), "SISTEMA", hash, false]
         );
 
-        await MySQLModel.query(
-            "INSERT INTO usuarios (id, nombre, pwd, conectado) VALUES (?, ?, ?, ?)",
-            [crypto.randomUUID(), "admin", hash2, false]
-        );
-
         console.log("- Usuario SISTEMA creado")
     }
 }

@@ -5,7 +5,7 @@ const MySQLStore = pkg(session);
 
 export default class MiddlewareClass {
     static requireLogin(req, res, next) {
-        const publicPaths = ["/login", "/api/v1/login", "/assets", "/favicon.ico"]
+        const publicPaths = ["/login", "/api/v1/login", "/assets", "/favicon.ico", "/register", "/api/v1/register"]
 
         if (publicPaths.some(p => req.path === p || req.path.startsWith(p + "/"))) {
             return next();

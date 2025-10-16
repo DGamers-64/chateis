@@ -15,7 +15,7 @@ export default class MensajesController {
         if (estado) {
             res.send(resultado)
         } else {
-            res.send({ error: resultado})
+            res.send({ error: resultado })
         }
     }
 }

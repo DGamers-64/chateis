@@ -19,9 +19,15 @@ app.use(express.json());
 
 app.use(MiddlewareClass.crearSesionMySQL);
 
+app.get("/register", (req, res) => {
+    res.sendFile(path.join(distPath, "index.html"))
+})
+
 app.get("/login", (req, res) => {
     res.sendFile(path.join(distPath, "index.html"))
 })
+
+app.post("/api/v1/register", LoginController.registrarUsuario)
 
 app.post("/api/v1/login", LoginController.comprobarCredenciales)
 

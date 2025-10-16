@@ -1,10 +1,10 @@
 <template>
     <main>
-        <h1>Login</h1>
+        <h1>Registro</h1>
         <input type="text" id="nombre-usuario" placeholder="Nombre"/>
         <input type="password" id="contrasena" placeholder="Contraseña"/>
-        <button id="iniciar-sesion">Iniciar sesión</button>
-        <router-link to="/register" id="guest-link">No tengo cuenta</router-link>
+        <button id="iniciar-sesion">Registrarse</button>
+        <router-link to="/login" id="guest-link">Ya tengo una cuenta</router-link>
         <span id="error"></span>
     </main>
 </template>
@@ -13,7 +13,7 @@
     import { onMounted } from 'vue';
     import axios from 'axios';
     onMounted(() => {
-        document.title = "Chateis - Login"
+        document.title = "Chateis - Registro"
         const nombreUsuario = document.getElementById("nombre-usuario")
         const contrasena = document.getElementById("contrasena")
         const errorContainer = document.getElementById("error")
@@ -41,7 +41,7 @@
                 errorContainer.style.display = "block"
             }
 
-            axios.post("/api/v1/login", {
+            axios.post("/api/v1/register", {
                 usuario: nombreUsuario.value,
                 password: contrasena.value
                 }, {
