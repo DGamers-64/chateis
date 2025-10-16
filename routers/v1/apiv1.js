@@ -8,8 +8,7 @@ apiv1Router.get("/mensajes", MensajesController.obtenerMensajes)
 apiv1Router.post("/mensajes", MensajesController.enviarMensaje)
 
 apiv1Router.get("/conectado", ConectadoController.obtenerConectados)
-apiv1Router.post("/conectado", ConectadoController.nuevoConectado)
-apiv1Router.delete("/conectado", ConectadoController.borrarConectado)
+apiv1Router.post("/conectado", ConectadoController.cambiarConectado)
 
 // apiv1Router.get("/salas", )
 // apiv1Router.post("/salas", )

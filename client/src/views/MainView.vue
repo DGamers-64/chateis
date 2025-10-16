@@ -16,14 +16,23 @@
 </template>
 
 <script setup>
+    import axios from "axios";
     import BotonesSuperioresComponent from "../components/BotonesSuperioresComponent.vue";
     import ChatComponent from "../components/ChatComponent.vue";
     import InputsComponent from "../components/InputsComponent.vue";
 
     document.title = "Chateis"
 
-    const params = new URLSearchParams(window.location.query)
+    const params = new URLSearchParams(window.location.search)
     const sala = params.get('sala') || "default"
+
+    axios.post("/api/v1/conectado", { conectado: true })
+    
+    window.addEventListener("beforeunload", () => {
+        const data = JSON.stringify({ conectado: false });
+        const blob = new Blob([data], { type: "application/json" });
+        navigator.sendBeacon("/api/v1/conectado", blob);
+    });
 </script>
 
 <style scoped>

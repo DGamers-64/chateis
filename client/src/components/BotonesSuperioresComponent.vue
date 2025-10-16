@@ -17,7 +17,7 @@
 
     onMounted(() => {
         obtenerConectados()
-        setInterval(obtenerConectados, 5000)
+        setInterval(obtenerConectados, 1000)
     })
 </script>
 

@@ -9,14 +9,8 @@ export default class ConectadoController {
         res.send(resultado)
     }
 
-    static async nuevoConectado(req, res) {
-        let resultado = await ConectadoModel.cambiarEstado(req.body.usuario, true)
-
-        res.send(resultado)
-    }
-
-    static async borrarConectado(req, res) {
-        let resultado = await ConectadoModel.cambiarEstado(req.body.usuario, false)
+    static async cambiarConectado(req, res) {
+        let resultado = await ConectadoModel.cambiarEstado(req.session.user.nombre, !!req.body.conectado)
 
         res.send(resultado)
     }
