@@ -23,7 +23,7 @@ export default class MiddlewareClass {
     }
 
     static crearSesionMySQL = session({
-        secret: process.env.SECRET_SESSION || "mi-secreto-super-seguro",
+        secret: process.env.SECRET_SESSION,
         resave: false,
         saveUninitialized: false,
         store: new MySQLStore({
