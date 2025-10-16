@@ -56,6 +56,8 @@
                         contrasena.value = ""
                         errorContainer.style.display = "block"
                         errorContainer.innerHTML = res.data.error
+                    } else {
+                        window.location.href = "/"
                     }
                 })
                 .catch(e => {

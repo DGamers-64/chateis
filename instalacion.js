@@ -14,9 +14,15 @@ async function crearUsuarioPorDefecto() {
 
     if (rows[0].total === 0) {
         const hash = await bcrypt.hash(process.env.CONTRASENA_SISTEMA, 10);
+        const hash2 = await bcrypt.hash("hola", 10);
         await MySQLModel.query(
             "INSERT INTO usuarios (id, nombre, pwd, conectado) VALUES (?, ?, ?, ?)",
             [crypto.randomUUID(), "SISTEMA", hash, false]
+        );
+
+        await MySQLModel.query(
+            "INSERT INTO usuarios (id, nombre, pwd, conectado) VALUES (?, ?, ?, ?)",
+            [crypto.randomUUID(), "admin", hash2, false]
         );
 
         console.log("- Usuario SISTEMA creado")

@@ -28,12 +28,11 @@
 
         async function mandarMensaje() {
             const mensaje = {
-                usuario: "SISTEMA", // CAMBIAR POR EL SESSION DEL USUARIO O ALGO
                 sala: props.sala,
                 mensaje: inputMensaje.value
             }
     
-            axios.post(`/api/v1/mensajes`, mensaje) // CAMBIAR LA URL POR LA DEL SERVIDOR
+            axios.post(`/api/v1/mensajes`, mensaje)
 
             inputMensaje.value = ""
         }

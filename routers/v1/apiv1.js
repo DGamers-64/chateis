@@ -1,11 +1,8 @@
 import { Router } from "express";
 import MensajesController from "../../controllers/mensajes.js";
 import ConectadoController from "../../controllers/conectado.js";
-import LoginController from "../../controllers/login.js";
 
 export const apiv1Router = Router({ mergeParams: true })
-
-apiv1Router.post("/login", LoginController.comprobarCredenciales)
 
 apiv1Router.get("/mensajes", MensajesController.obtenerMensajes)
 apiv1Router.post("/mensajes", MensajesController.enviarMensaje)
